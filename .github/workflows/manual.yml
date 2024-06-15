@@ -1,0 +1,14 @@
+name: Manual
+on:
+  workflow_dispatch: # 手動実行イベント
+    inputs:
+      getting: # 入力パラメータ名
+        type: string # パラメータの型
+        default: Hello # デフォルト値
+        required: true # 必須かどうか
+        description: A cheerful word # パラメータの説明
+jobs: 
+  run: 
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "${{ inputs.getting }}" # inputs から参照が出来る
