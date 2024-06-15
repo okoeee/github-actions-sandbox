@@ -3,7 +3,7 @@ name: Hello # ワークフロー名
 on: push # イベント
 jobs: # ジョブの定義
   hello: # ジョブのID
-    runs-on: ubuntu-latest # 実行環境
-    steps:
+    runs-on: ubuntu-latest # 実行環境 windowsやmacOSも指定可能
+    steps: # ステップの実行には シェル か アクション を指定する
       - run: echo "Hello, world!" # シェルの実行
       - uses: actions/checkout@v4 # アクションの実行
