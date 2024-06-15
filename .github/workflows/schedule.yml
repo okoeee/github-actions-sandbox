@@ -1,0 +1,12 @@
+# 定期実行の workflow
+# 実行されてしまうので、コメントアウトしておく
+
+# name: Schedule
+# on:
+#   schedule:
+#     - cron: '*/15 * * * *' # 15分毎に実行
+# jobs: 
+#   run:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Hello, world!"
