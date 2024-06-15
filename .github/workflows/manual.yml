@@ -7,6 +7,13 @@ on:
         default: Hello # デフォルト値
         required: true # 必須かどうか
         description: A cheerful word # パラメータの説明
+      log-level:
+        type: choice # 列挙型の指定も出来る
+        options: 
+          - debug
+          - info
+          - warning
+          - error
 jobs: 
   run: 
     runs-on: ubuntu-latest
