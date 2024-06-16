@@ -102,3 +102,39 @@ jobs:
     steps:
       - run: echo "${PASSWORD}" # ログ出力時にマスクされる
 ```
+
+## Glob
+Glob とは Unix 系環境において、ワイルドカードでファイル名のパターンを指定するための仕組みである。
+
+- `*` : `/` を除く、ゼロ文字以上の文字列にマッチ
+- `**`: `/` を含む、ゼロ文字以上の文字列にマッチ
+- `?` : 直前に指定した文字に対して、ゼロ文字か1文字にマッチ
+- `[]` : 指定した文字範囲のみ含まれる文字列にマッチ
+
+## ログ
+Secrets や Variables に `ACTIONS_STE_DEBUG` true を設定することで、ログの詳細を確認することが出来る。
+
+Bash のトレーシングオプションを利用することで、ログの詳細を確認することが出来る。
+
+```yml
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set -x
+          echo "Hello, World!"
+          date
+          hostname
+```
+
+### ログのグループ化
+```yml
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        echo "::group::Show environment variables"
+        printenv
+        echo "::endgroup::" 
