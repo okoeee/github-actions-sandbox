@@ -138,3 +138,35 @@ jobs:
         echo "::group::Show environment variables"
         printenv
         echo "::endgroup::" 
+```
+
+## ジョブの並列実行
+以下のような形でジョブを並列実行することが出来る。
+```yml
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job 1"
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job 2"
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job 3"
+```
+
+## マトリックス
+1つのジョブ定義で複数のジョブを実行することが出来る。
+```yml
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+  runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "Hello, World!"
+```
