@@ -5,12 +5,11 @@ jobs: # ジョブの定義
   hello: # ジョブのID
     runs-on: ubuntu-latest # 実行環境 windowsやmacOSも指定可能
     steps: # ステップの実行には シェル か アクション を指定する
+      - name: Hello
       - run: echo "Hello, world!" # シェルの実行
       - uses: actions/checkout@v4 # アクションの実行
 
-  log: # Job サマリーの出力
-    runs-on: ubuntu-latest
-    steps:
+      - name: Job Summary
       - run: |
         echo "## Job Summary :rocket:" >> "${GITHUB_STEP_SUMMARY}"
         echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
