@@ -18,3 +18,7 @@ jobs:
           dd if=/dev/urandom of="${GITHUB_WORKSPACE}/dummy" bs=1M count=10
           sleep 30
       - run: ls -lh "${GITHUB_WORKSPACE}/dummy"
+
+# キャッシュのルール
+# 7日以上アクセスされていないキャッシュは削除
+# キャッシュの合計サイズは各リポジトリ10Gまで
