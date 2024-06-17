@@ -7,3 +7,11 @@ jobs: # ジョブの定義
     steps: # ステップの実行には シェル か アクション を指定する
       - run: echo "Hello, world!" # シェルの実行
       - uses: actions/checkout@v4 # アクションの実行
+
+  log: # Job サマリーの出力
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        echo "## Job Summary :rocket:" >> "${GITHUB_STEP_SUMMARY}"
+        echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
+        echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
