@@ -11,7 +11,7 @@ jobs:
         with:
           key: test-${{ runner.os }}-${{ github.sha }} # キャッシュのキーを指定
           path: ${{ github.workspace }}/dummy # キャッシュ対象のディレクトリを指定
-          restore-keys: | # キャッシュが見つからなかった場合に使用するキーを指定
+          restore-keys: | # キャッシュが見つからなかった場合に使用するキーを指定、キーに一致するキャッシュが見つからない場合、restore-keyのprefixが一致するキャッシュを探す
             test-${{ runner.os }}-
       - run: |
           if [[ -f "${GITHUB_WORKSPACE}/dummy" ]]; then exit 0; fi
