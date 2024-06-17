@@ -16,6 +16,6 @@ jobs: # ジョブの定義
 
       - name: Job Summary
         run: |
-        echo "## Job Summary :rocket:" >> "${GITHUB_STEP_SUMMARY}"
-        echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
-        echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
+          echo "## Job Summary :rocket:" >> "${GITHUB_STEP_SUMMARY}"
+          echo "- first line" >> "${GITHUB_STEP_SUMMARY}"
+          echo "- second line" >> "${GITHUB_STEP_SUMMARY}"
