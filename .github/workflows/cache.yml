@@ -14,7 +14,7 @@ jobs:
           restore-keys: | # キャッシュが見つからなかった場合に使用するキーを指定
             test-${{ runner.os }}-
       - run: |
-        if [[ -f "${GITHUB_WORKSPACE}/dummy" ]]; then exit 0; fi
-        dd if=/dev/urandom of="${GITHUB_WORKSPACE}/dummy" bs=1M count=10
-        sleep 30
+          if [[ -f "${GITHUB_WORKSPACE}/dummy" ]]; then exit 0; fi
+          dd if=/dev/urandom of="${GITHUB_WORKSPACE}/dummy" bs=1M count=10
+          sleep 30
       - run: ls -lh "${GITHUB_WORKSPACE}/dummy"
