@@ -1,15 +1,19 @@
 
 name: Hello # ワークフロー名
+
 on: 
   push: # イベント
     branches:
       - main
+
 jobs: # ジョブの定義
   hello: # ジョブのID
     runs-on: ubuntu-latest # 実行環境 windowsやmacOSも指定可能
     steps: # ステップの実行には シェル か アクション を指定する
       - name: Checkout 
         uses: actions/checkout@v4 # アクションの実行
+        with:
+          fetch-depth: 0 # リポジトリの全履歴を取得、デフォルトだと1になっていて1つ前のコミットのみ取得している
 
       - name: Hello world
         run: echo "Hello, world!" # シェルの実行
