@@ -1,8 +1,9 @@
 
 name: Hello # ワークフロー名
-on: push # イベント
-  branches:
-    - main
+on: 
+  push: # イベント
+    branches:
+      - main
 jobs: # ジョブの定義
   hello: # ジョブのID
     runs-on: ubuntu-latest # 実行環境 windowsやmacOSも指定可能
