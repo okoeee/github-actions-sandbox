@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VERSION: ${{ github.ref_name }} # Gitタグからバージョンを取得
-    permission:
+    permissions:
       contents: write # リリースノートを作成するために必要
     steps:
       - uses: actions/checkout@v4
