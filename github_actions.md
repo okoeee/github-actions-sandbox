@@ -1,3 +1,17 @@
+- [Context](#context)
+  - [GitHub context](#github-context)
+  - [Runner context](#runner-context)
+- [環境変数](#環境変数)
+  - [中間環境変数 (Intermediate environment variables)](#中間環境変数-intermediate-environment-variables)
+- [Variables](#variables)
+- [Secrets](#secrets)
+- [Glob](#glob)
+- [ログ](#ログ)
+  - [ログのグループ化](#ログのグループ化)
+- [ジョブの並列実行](#ジョブの並列実行)
+- [マトリックス](#マトリックス)
+- [バージョニング](#バージョニング)
+  - [Gitタグ](#gitタグ)
 
 ## Context
 GitHub Actions には実行時の情報などを保持する Context がある。
@@ -170,3 +184,28 @@ jobs:
     steps:
       - run: echo "Hello, World!"
 ```
+
+
+## バージョニング
+バージョニングには沢山の手法があるが、よく使われるのは セマンティックバージョニング(Semantic versioning) である。
+「1.2.3」のように表記し、3つの要素で構成される。
+
+1. メジャーバージョン: 後方互換性がない大きな変更
+2. マイナーバージョン: 後方互換性がある機能追加
+3. パッチバージョン: 後方互換性があるバグ修正
+
+### Gitタグ
+バージョンの付与方法にはいくつかの手法がある。
+ソースコードへの記述、利用指定技術への依存など。
+
+しかし実装技術に依存しない方法がある。`git tag` でタグを付与する方法である。
+
+```sh
+# タグの作成
+git tag v1.0.0
+
+# タグのpush
+git push origin v1.0.0
+```
+
+参考: https://git-scm.com/book/ja/v2/Git-%E3%81%AE%E5%9F%BA%E6%9C%AC-%E3%82%BF%E3%82%B0
