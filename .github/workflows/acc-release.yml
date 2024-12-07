@@ -3,7 +3,7 @@ name: ACC Release sample
 on:
   push:
     branches:
-      - release/**
+      - release
 
 jobs:
   update-release-version:
@@ -19,7 +19,8 @@ jobs:
 
       - name: Update .release
         run: |
-          git pull
+          git fetch origin
+          git merge origin/release
           FILE=".release"
           CURRENT_VERSION=$(cat $FILE)
           NEXT_VERSION=$((CURRENT_VERSION + 1))
