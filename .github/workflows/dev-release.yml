@@ -8,7 +8,7 @@ on:
     workflows: ["ACC Release sample"]
     types: [completed]
     branches:
-      - release/**
+      - release
 
 jobs:
   dev-release:
