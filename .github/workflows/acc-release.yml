@@ -17,7 +17,7 @@ jobs:
 
       - name: Update .release
         run: |
-          FILE="./.github/workflows/.release"
+          FILE=".release"
           CURRENT_VERSION=$(cat $FILE)
           NEXT_VERSION=$((CURRENT_VERSION + 1))
           echo "$NEXT_VERSION" > $FILE
@@ -28,6 +28,6 @@ jobs:
           git remote set-url origin https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add .github/workflows/.release
+          git add .release
           git commit -m "Increment release version"
           git push origin main
