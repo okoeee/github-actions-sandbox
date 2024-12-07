@@ -10,10 +10,17 @@ jobs:
   update-release-version:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
       - name: Update .release
         run: |
-          ./update-release.sh
-      
+          FILE="./.github/workflows/.release"
+          CURRENT_VERSION=$(cat $FILE)
+          NEXT_VERSION=$((CURRENT_VERSION + 1))
+          echo "$NEXT_VERSION" > $FILE
+          echo "Next version is $NEXT_VERSION"
+
       - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions"
