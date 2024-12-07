@@ -30,3 +30,14 @@ jobs:
           git add .release
           git commit -m "Increment release version"
           git push
+
+      - name: Release
+        run: |
+          echo "ACC released successfully"
+
+      - name: Sync main branch
+        run: |
+          git fetch origin
+          git checkout main
+          git merge origin/release
+          git push
