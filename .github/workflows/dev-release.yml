@@ -1,0 +1,19 @@
+name: DEV Release sample
+
+on:
+  push:
+    branches:
+      - main
+  # workflow_run:
+  #   workflows: ["ACC Release sample"]
+  #   types: [completed]
+  #   branches:
+  #     - release/**
+
+jobs:
+  dev-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release dev
+        run: |
+          echo "Dev released successfully"

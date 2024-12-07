@@ -1,0 +1,43 @@
+name: ACC Release sample
+
+on:
+  push:
+    branches:
+      - release/**
+  workflow_dispatch:
+
+jobs:
+  update-release-version:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Update .release
+        run: |
+          FILE=".release"
+          CURRENT_VERSION=$(cat $FILE)
+          NEXT_VERSION=$((CURRENT_VERSION + 1))
+          echo "$NEXT_VERSION" > $FILE
+          echo "Next version is $NEXT_VERSION"
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .release
+          git commit -m "Increment release version"
+          git push
+
+      - name: Release
+        run: |
+          echo "ACC released successfully"
+
+      - name: Sync main branch
+        run: |
+          git fetch origin
+          git checkout main
+          git merge origin/release
+          git push
