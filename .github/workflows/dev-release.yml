@@ -10,6 +10,10 @@ on:
     branches:
       - release
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   dev-release:
     runs-on: ubuntu-latest
